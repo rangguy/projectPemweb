@@ -9,7 +9,7 @@ $password = md5($_POST['password']);
 $status = $_POST['status'];
 
 if(isset($_POST['update'])){
-	$sql = "update user set nama='$nama',username = '$user',password='$password' where id='$upd' ";
+	$sql = "update user set nama='$nama',username = '$user',password='$password',status='$status' where id='$upd' ";
 	$query = mysqli_query($conn, $sql);
 	if($query){
 		?>
@@ -92,12 +92,14 @@ if($row1['id'] != ""){
 								<div class="input-group">
 									<select name="status" class="input--style-5">
 									<?php
-										$stat = $row1['status'];
-											if ($stat == "admin") {
-												echo "<option value='$stat' selected> Admin </option>";
+										$stat = array("Owner", "Admin");
+										foreach ($stat as $stat){
+											if ($stat == $row1['status']) {
+												echo "<option value='$stat' selected> $stat </option>";
 											} else {
-												echo "<option value='$stat'> Pelanggan </option>";
+												echo "<option value='$stat'> $stat </option>";
 											}
+										}
 										?>
 									</select>
 								</div>

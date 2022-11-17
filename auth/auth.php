@@ -7,23 +7,16 @@
     $_SESSION['user'] = $_POST['username'];
     $query = mysqli_query($conn, "SELECT * from user where username = '$username' AND password = '$password'");
     $row1 = mysqli_fetch_array($query);
-    if($row1['username']==$username && $row1['password']==$password){
-        if($row1['status']=="admin"){
-            ?>
-            <script>
-            alert("Berhasil Login");
-            </script>
-            <?php
-            $_SESSION['nama'] = $row1['nama'];
-            $_SESSION['status'] = $row1['status'];
-            $_SESSION['pass'] = $row1['password'];
-            header("Location:../app/home/home.php");
-        }else{
-            $_SESSION['nama'] = $row1['nama'];
-            $_SESSION['status'] = $row1['status'];
-            $_SESSION['pass'] = $row1['password'];
-            header("Location:../app/home/home.php");
-        }
+    if($row1['username']==$username && $row1['password']==$password){     
+        ?>
+        <script>
+        alert("Berhasil Login");
+        </script>
+        <?php
+        $_SESSION['nama'] = $row1['nama'];
+        $_SESSION['status'] = $row1['status'];
+        $_SESSION['pass'] = $row1['password'];
+        header("Location:../app/home/home.php");
     }else{
         ?>
         <script>

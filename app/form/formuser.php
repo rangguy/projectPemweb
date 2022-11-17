@@ -9,14 +9,14 @@ $status = $_POST['status'];
 
 if(isset($_POST['insert'])){
 	$sql = "INSERT into user(id, nama, username, password, status) VALUES('','$nama','$user','$password', '$status') ";
-	$query = mysqli_query($conn, $sql);
+	$query1 = mysqli_query($conn, $sql);
     $query = mysqli_query($conn, "SELECT * from user");
     $row1 = mysqli_fetch_array($query);
-	if($query && $user!=$row1['username']){
+	if($query1 && $user!=$row1['username']){
 		?>
 		<script>
             alert("Berhasil Memasukkan Data User!");
-            document.location='../home/home.php?page=1';
+            document.location='../home/home.php?page=datauser';
         </script>
 		<?php
 	}else {
@@ -96,8 +96,8 @@ if(isset($_POST['insert'])){
                             <div class="value">
                                 <div class="input-group">
                                     <select name="status" id="status" class="input--style-5">
-                                        <option value="admin"> Admin </option>
-                                        <option value="pelanggan"> Pelanggan </option>
+                                        <option value="Admin"> Admin </option>
+                                        <option value="Owner"> Owner </option>
                                     </select>                                 
                                 </div>
                             </div>

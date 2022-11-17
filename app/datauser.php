@@ -23,7 +23,7 @@ function cekDel(){
 	alert("Tidak Dapat Menghapus User!");
 }
 </script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <h2 align="center">Data User</h2>
 	<a href='../form/formuser.php' class="btn btn-success m-2">Tambah Data User</a>
 	<table class="table table-bordered table-striped table-hover table-responsive-sm">
@@ -36,7 +36,7 @@ function cekDel(){
 		</tr>
 		<?php
 		$no = 1;
-		$sql = "SELECT * from user order by id asc";
+		$sql = "SELECT * from user";
 		$query = mysqli_query($conn, $sql); 
 		while ($row = mysqli_fetch_array($query)) {
 			echo "
@@ -46,11 +46,11 @@ function cekDel(){
 				<td>$row[username]</td>
 				<td>$row[status]</td>
 				<td>
-					<a href='../form/edit-data.php?upd_user=$row[id]' class='btn btn-warning' > Edit</a> ";	
-					if ($row['username']==$_SESSION['user']){
-						echo "<a href='' class='btn btn-danger' onclick='return cekDel();'> Delete </a> ";
+					<a href='../form/edit-data.php?upd_user=$row[id]' class='btn btn-warning' > <i class='bi bi-pen' ></i></a> ";	
+					if ($row['username']==$_SESSION['user'] | $_SESSION['status'] !="Owner"){
+						echo "<a href='' class='btn btn-danger' onclick='return cekDel();' > <i class='bi bi-trash'></i> </a> ";
 					}else{
-						echo "<a href='../datauser.php?del_user=$row[id]' class='btn btn-danger'> Delete </a> ";
+						echo "<a href='../datauser.php?del_user=$row[id]' class='btn btn-danger'> <i class='bi bi-trash'></i> </a> ";
 					}"				
 				</td>
 			</tr>

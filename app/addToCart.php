@@ -2,18 +2,30 @@
 include '../auth/config.php';
 session_start();
 
-$upd = $_POST['id_minuman'];
-$jumlah = $_POST['jumlahMinuman'];
 if(isset($_POST['addMinuman'])){
-	$jumlahBeli = intval($_POST['jumlahBeliMinuman']);
-    $stok = $jumlah - $jumlahBeli;
-	$updatejumlah = "update minuman set jumlah_minuman='$stok' where id_minuman='$upd'";
-	$queryUpdate = mysqli_query($conn, $updatejumlah);
-    $insertPiring = "insert into piring(id_pesanan, nama_pesanan, harga_pesanan, jumlah_pesanan) values('', )";
-	if($queryUpdate){
+	$updMinuman = $_POST['id_minuman'];
+	$jumlahMinuman = $_POST['jumlahMinuman'];
+	$jumlahBeliMinuman = intval($_POST['jumlahBeliMinuman']);
+    $stokMinuman = $jumlahMinuman - $jumlahBeliMinuman;
+	$updateJumlahMinuman = "update minuman set jumlah_minuman='$stokMinuman' where id_minuman='$updMinuman'";
+	$queryUpdateMinuman = mysqli_query($conn, $updateJumlahMinuman);
+	if($queryUpdateMinuman){
 		?>
 		<script>alert("Berhasil Memasukkan Ke Piring!"); 
-        document.location="home/home.php?page=2"</script>
+        document.location="home/home.php?page=daftarmenu"</script>
+		<?php
+	}
+}else if(isset($_POST['addMakanan'])){
+	$updMakanan = $_POST['id_menu'];
+	$jumlahMakanan = $_POST['jumlahMakanan'];
+	$jumlahBeliMakanan = intval($_POST['jumlahBeliMakanan']);
+    $stokMakanan = $jumlahMakanan - $jumlahBeliMakanan;
+	$updateJumlahMakanan = "update menu set jumlah='$stokMakanan' where id_menu='$updMakanan'";
+	$queryUpdateMakanan = mysqli_query($conn, $updateJumlahMakanan);
+	if($queryUpdateMakanan){
+		?>
+		<script>alert("Berhasil Memasukkan Ke Piring!"); 
+        document.location="home/home.php?page=daftarmenu"</script>
 		<?php
 	}
 }

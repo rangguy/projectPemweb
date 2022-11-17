@@ -67,10 +67,10 @@
 					</div> -->
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="app/form/form.php">
-							Create your Account
+						<!-- <a class="txt2" href="app/form/form.php">
+							asdasdasd
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+						</a> -->
 					</div>
 				</form>
 			</div>
