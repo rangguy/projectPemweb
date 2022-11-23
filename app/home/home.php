@@ -40,19 +40,19 @@ $status = $_SESSION['status'];
 	  			</div>
 	  		</div>
         <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="home.php"><span class="fa mr-3"></span> Home</a>
+          <li >
+            <a href="home.php?page=profil"><span class="fa mr-3"></span> Home</a>
           </li>
-          <li>
+          <li >
             <a href='home.php?page=datauser'><span class='fa mr-3'></span> Data User</a>
           </li>
-          <li>
+          <li class="">
             <a href="home.php?page=daftarmenu"><span class="fa mr-3"></span> Daftar Menu</a>
           </li>
-          <li>
+          <li class="">
             <a href="home.php?page=piring"><span class="fa mr-3"></span> Piring</a>
           </li>
-          <li>
+          <li class="">
             <a href="../../logout.php"><span class="fa mr-3"></span> Log Out</a>
           </li>
         </ul>
@@ -66,46 +66,30 @@ $status = $_SESSION['status'];
         error_reporting(E_ALL ^ E_NOTICE and E_DEPRECATED);
         if(isset($_GET['page'])){
           if($_GET['page'] == 'datauser'){
+            $active = "active";
             include '../datauser.php';
           }else if($_GET['page'] == 'daftarmenu'){
+            $active = "active";
             include '../daftarmenu.php';
           }else if($_GET['page'] == 'piring'){
+            $active = "active";
             include '../cart.php';
           }else if($_GET['page'] == 'insertMakanan'){
+            $active = "active";
             include '../insertMakanan.php';
           }else if($_GET['page'] == 'insertMinuman'){
+            $active = "active";
             include '../insertMinuman.php';
           }else if($_GET['page'] == 'updateMakanan'){
+            $active = "active";
             include '../update/updateMakanan.php';
           }else if($_GET['page'] == 'updateMinuman'){
+            $active = "active";
             include '../update/updateMinuman.php';
           }else{
-            include '../notfound.php';
+            include '../profil.php';
           }
         }
-          // switch($_GET['page']){
-          //   case 1:
-          //     include '../datauser.php';
-          //     break;
-          //   case 2:
-          //     include '../daftarmenu.php';
-          //     break;
-          //   case 3:
-          //     include '../cart.php';
-          //     break;
-          //   case 4:
-          //     include '../insertMakanan.php';
-          //     break;
-          //   case 5:
-          //     include '../insertMinuman.php';
-          //     break;
-          //   case 6:
-          //     include '../updateMakanan.php';
-          //     break;
-          //   case 7:
-          //     include '../updateMinuman.php';
-          //     break;
-          // }
         ?>
       </div>
 

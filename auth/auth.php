@@ -13,6 +13,7 @@
         alert("Berhasil Login");
         </script>
         <?php
+        $_SESSION['id'] = $row1['id'];
         $_SESSION['nama'] = $row1['nama'];
         $_SESSION['status'] = $row1['status'];
         $_SESSION['pass'] = $row1['password'];
