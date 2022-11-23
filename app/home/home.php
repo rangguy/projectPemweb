@@ -43,7 +43,7 @@ $status = $_SESSION['status'];
 	  		</div>
         <ul class="list-unstyled components mb-5">
           <li >
-            <a href="home.php?page=profil"><span class="fa mr-3"></span> Home</a>
+            <a href="home.php"><span class="fa mr-3"></span> Home</a>
           </li>
           <li >
             <a href='home.php?page=datauser'><span class='fa mr-3'></span> Data User</a>
@@ -89,8 +89,10 @@ $status = $_SESSION['status'];
             $active = "active";
             include '../update/updateMinuman.php';
           }else{
-            include '../profil.php';
+            include '../notfound.php';
           }
+        }else{
+          include '../profil.php';
         }
         ?>
       </div>
