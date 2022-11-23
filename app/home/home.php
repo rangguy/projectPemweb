@@ -33,7 +33,7 @@ $status = $_SESSION['status'];
                   if(!$_SESSION['user']){
                     header("location:../../index.php");
                   }else{
-                    echo $_SESSION['user'];  
+                    echo $_SESSION['user'];
                   }
                 ?>   
             </h3>
