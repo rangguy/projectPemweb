@@ -5,6 +5,8 @@ include '../../auth/config.php';
 $status = $_SESSION['status'];
 
 ?>
+<link rel="shortcut icon" href="../images/restaurant.png" type="image/x-icon">
+
 <!doctype html>
 <html lang="en">
   <head>
