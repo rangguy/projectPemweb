@@ -27,7 +27,7 @@ function cekDel(){
 <h2 align="center">Data User</h2>
 	<a href='../form/formuser.php' class="btn btn-success m-2">Tambah Data User</a>
 	<table class="table table-bordered table-striped table-hover table-responsive-sm">
-		<tr class="table-primary">
+		<tr class="thead-dark">
 			<th>No</th>
 			<th>Nama</th>
 			<th>User</th>

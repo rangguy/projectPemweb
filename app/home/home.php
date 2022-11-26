@@ -68,25 +68,18 @@ $status = $_SESSION['status'];
         error_reporting(E_ALL ^ E_NOTICE and E_DEPRECATED);
         if(isset($_GET['page'])){
           if($_GET['page'] == 'datauser'){
-            $active = "active";
             include '../datauser.php';
           }else if($_GET['page'] == 'daftarmenu'){
-            $active = "active";
             include '../daftarmenu.php';
           }else if($_GET['page'] == 'piring'){
-            $active = "active";
             include '../cart.php';
           }else if($_GET['page'] == 'insertMakanan'){
-            $active = "active";
             include '../insertMakanan.php';
           }else if($_GET['page'] == 'insertMinuman'){
-            $active = "active";
             include '../insertMinuman.php';
           }else if($_GET['page'] == 'updateMakanan'){
-            $active = "active";
             include '../update/updateMakanan.php';
           }else if($_GET['page'] == 'updateMinuman'){
-            $active = "active";
             include '../update/updateMinuman.php';
           }else{
             include '../notfound.php';

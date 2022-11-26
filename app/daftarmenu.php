@@ -36,8 +36,8 @@ if ($delMinuman != "") {
 <body>
 	<div id="makanan">
 		<h2 align="center">Makanan</h2>
-		<a href='home.php?page=insertMakanan' class='btn btn-success'>Tambah Data Makanan</a>	
-		<table class="table table-bordered table-striped table-hover table-responsive-sm mt-2">
+		<a href='home.php?page=insertMakanan' class='btn btn-success m-2'>Tambah Data Makanan</a>	
+		<table class="table table-bordered table-striped table-hover table-responsive-sm">
 			<tr class="thead-dark">
 				<th>No</th>
 				<th><a href="home.php?page=daftarmenu&&by=nama_menu" style="color: white;">Nama</a></th>
@@ -81,8 +81,8 @@ if ($delMinuman != "") {
 
 	<div id="minuman">
 		<h2 align="center" class="mt-5">Minuman</h2>
-		<a href='home.php?page=insertMinuman' class='btn btn-success'>Tambah Data Minuman</a>	
-		<table class="table table-bordered table-striped table-hover table-responsive-sm mt-2">
+		<a href='home.php?page=insertMinuman' class='btn btn-success m-2'>Tambah Data Minuman</a>	
+		<table class="table table-bordered table-striped table-hover table-responsive-sm">
 			<tr class="thead-dark">
 				<th>No</th>
 				<th><a href="home.php?page=daftarmenu&&by=nama_minuman"  style="color: white;">Nama</a></th>
