@@ -58,14 +58,16 @@ if ($delPesanan != "") {
 				";
 			?>
 			<td>
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				Tunai
+				<input type="text" name="uangBayar" id="uangBayar" size="4"><br>
+				<!-- Button trigger modal-->
+				<button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModal">
 					Bayar
 				</button>
 
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">Bayar</h5>
@@ -74,8 +76,38 @@ if ($delPesanan != "") {
 								</button>
 							</div>
 							<div class="modal-body">
-								<b>Total Harga</b>&emsp;&emsp; &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;
-								&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <?php echo $harga ?>
+								<table width="100%">
+									<tr>
+										<th>Item</th>
+										<th>Harga</th>
+									</tr>
+									<?php
+									$i = 0;
+									$sql = "SELECT * from pesanan";
+									$query = mysqli_query($conn, $sql);
+									while ($row = mysqli_fetch_array($query)) {
+										echo "
+										<tr>
+											<td>$row[nama] x $row[jumlah]</td>
+											<td>$row[totalHarga]</td>
+										</tr>
+										";
+										$i++;
+									}
+									echo "<tr>
+									<td><b>Total Harga</b></td>
+									<td> $harga</td>
+									</tr>
+									<tr>
+									<td><b>Tunai</b></td>
+									<td>$tunai</td>
+									</tr>
+									<td><b>Kembalian</b></td>
+									<td>$kembalian</td>
+									</tr>
+									";
+									?>
+								</table>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
