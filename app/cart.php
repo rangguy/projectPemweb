@@ -40,36 +40,38 @@ if ($delPesanan != "") {
 			$query = mysqli_query($conn, $sql);
 			while ($row = mysqli_fetch_array($query)) {
 				echo "
-					<tr>
-						<td>$no</td>
-						<td>$row[nama]</td>
-						<td>$row[jumlah]</td>
-						<td>$row[totalHarga]</td>
-						<td>
-						<a href='home.php?page=piring&&delPesanan=$row[id_pesanan]' class='btn btn-danger'><i class='bi bi-trash'></i> </a>
-                        </td>
-					</tr>
-					";
+				<tr>
+				<td>$no</td>
+				<td>$row[nama]</td>
+				<td>$row[jumlah]</td>
+				<td>$row[totalHarga]</td>
+				<td>
+				<a href='home.php?page=piring&&delPesanan=$row[id_pesanan]' class='btn btn-danger'><i class='bi bi-trash'></i> </a>
+				</td>
+				</tr>
+				";
 				$no++;
 				$harga = $row['totalHarga'] + $harga;
 			}
 			echo "<tr>
-					<td colspan=3><b>Total Harga</b></td>
-					<td> $harga</td>
-				";
+			<td colspan=3><b>Total Harga</b></td>
+			<td> $harga</td>
+			";
 			?>
-			<!-- <script>
-				$('#submitBtn').click(function() {
-					$('#tunai').text($('#uangBayar').val());
+			<script>
+				$(document).ready(function() {
+					$("#uangBayar,#simbol").keyup(function() {
+						var uangBayar = $("#uangBayar").val();
+						var simbol = $("#simbol").val(); 
+						var harga = <?php echo $harga ?>;
+					if(simbol == '-') { var kembalian = parseInt(uangBayar) - parseInt(harga);}
+					
+					$("#kembalian").val(kembalian);});
 				});
-			</script> -->
+			</script>
 			<td>
-				<form action="<?php $_SERVER['PHP_SELF']; ?>" role="form" name="myform" method="POST" id="form">
-					Tunai <input type="text" name="uangBayar" id="uangBayar" size="4"><br>
-					<!-- Button trigger modal-->
-					<input type="button" name="btn" id="submitBtn" value="Bayar" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary mt-2">
-				</form>
-
+				<!-- Button trigger modal-->
+				<input type="button" name="btn" id="submitBtn" value="Bayar" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary mt-2">
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -81,37 +83,29 @@ if ($delPesanan != "") {
 								</button>
 							</div>
 							<div class="modal-body">
-								<table width="100%" id="modal_body">
-									<tr>
-										<th>Item</th>
-										<th>Harga</th>
-									</tr>
-									<?php
-									$i = 0;
-									$tunai = intval($_POST['uangBayar']);
-									$kembalian = $tunai - $harga;
-									$sql = "SELECT * from pesanan";
-									$query = mysqli_query($conn, $sql);
-									while ($row = mysqli_fetch_array($query)) {
-										$i++;
-										echo "
-										<tr>
-											<td>$row[nama] x $row[jumlah]</td>
-											<td>$row[totalHarga]</td>
-										</tr>
-										";
-									}
-									?>
+								<?php
+								 $nilaiTunai = isset($_POST['uangBayar']) ?$_POST['uangBayar']: '';
+								 $nilaiKembalian = isset($_POST['kembalian']) ?$_POST['kembalian']: '';
+								 $datasimbol = isset($_POST['simbol']) ?$_POST['simbol']: '';
+								?>
+								<table width="100%">
 									<tr>
 										<th>Total Harga</th>
 										<th><?php echo $harga; ?></th>
 									</tr>
 									<tr>
 										<th>Tunai</th>
-										<th id="tunai"><?php echo $_POST['uangBayar'];?></th>
+										<td>
+											<input type="text" name="uangBayar" id="uangBayar" value="<?php echo $tunai; ?>">
+											<input type="text" name="simbol" id="simbol" value="-" hidden>
+										</td>
 									</tr>
-									<th>Kembalian</th>
-									<th><?php echo $kembalian; ?></th>
+
+									<tr>
+										<th>Kembalian</th>
+										<td>
+											<input type="text" name="kembalian" id="kembalian" value="<?php echo $nilaiKembalian ?>">
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -127,3 +121,21 @@ if ($delPesanan != "") {
 		</table>
 	</div>
 </body>
+<?php
+// $i = 0;
+// $sql = "SELECT * from pesanan";
+// $query = mysqli_query($conn, $sql);
+// while ($row = mysqli_fetch_array($query)) {
+// 	$i++;
+// 	echo "
+// 	<tr>
+// 	<td>$row[nama] x $row[jumlah]</td>
+// 	<td>$row[totalHarga]</td>
+// 	</tr>
+// 	";
+// }
+// if (isset($_POST['btn'])) {
+// 	$tunai = $_POST['uangBayar'];
+// 	$kembalian = $tunai - $harga;
+// }
+?>
