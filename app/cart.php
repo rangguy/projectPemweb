@@ -60,11 +60,11 @@ if ($delPesanan != "") {
 			?>
 			<script>
 				$(document).ready(function() {
-					$("#uangBayar,#simbol").keyup(function() {
-						var uangBayar = $("#uangBayar").val();
-						var simbol = $("#simbol").val(); 
+					$("#uangBayar").keyup(function() {
+						var uangBayar = $("#uangBayar").val(); 
 						var harga = <?php echo $harga ?>;
-					if(simbol == '-') { var kembalian = parseInt(uangBayar) - parseInt(harga);}
+						
+						var kembalian = parseInt(uangBayar) - parseInt(harga);
 					
 					$("#kembalian").val(kembalian);});
 				});
@@ -86,7 +86,6 @@ if ($delPesanan != "") {
 								<?php
 								 $nilaiTunai = isset($_POST['uangBayar']) ?$_POST['uangBayar']: '';
 								 $nilaiKembalian = isset($_POST['kembalian']) ?$_POST['kembalian']: '';
-								 $datasimbol = isset($_POST['simbol']) ?$_POST['simbol']: '';
 								?>
 								<table width="100%">
 									<tr>
@@ -97,7 +96,6 @@ if ($delPesanan != "") {
 										<th>Tunai</th>
 										<td>
 											<input type="text" name="uangBayar" id="uangBayar" value="<?php echo $tunai; ?>">
-											<input type="text" name="simbol" id="simbol" value="-" hidden>
 										</td>
 									</tr>
 
@@ -121,21 +119,3 @@ if ($delPesanan != "") {
 		</table>
 	</div>
 </body>
-<?php
-// $i = 0;
-// $sql = "SELECT * from pesanan";
-// $query = mysqli_query($conn, $sql);
-// while ($row = mysqli_fetch_array($query)) {
-// 	$i++;
-// 	echo "
-// 	<tr>
-// 	<td>$row[nama] x $row[jumlah]</td>
-// 	<td>$row[totalHarga]</td>
-// 	</tr>
-// 	";
-// }
-// if (isset($_POST['btn'])) {
-// 	$tunai = $_POST['uangBayar'];
-// 	$kembalian = $tunai - $harga;
-// }
-?>
