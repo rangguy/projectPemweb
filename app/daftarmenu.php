@@ -42,7 +42,7 @@ if ($delMinuman != "") {
 				<th>No</th>
 				<th><a href="home.php?page=daftarmenu&&by=nama_menu" style="color: white;">Nama</a></th>
 				<th><a href="home.php?page=daftarmenu&&by=harga" style="color: white;">Harga</a></th>
-				<th><a href="home.php?page=daftarmenu&&by=jumlah" style="color: white;">Jumlah</a></th>
+				<th><a href="home.php?page=daftarmenu&&by=jumlah" style="color: white;">Stok</a></th>
 				<th>Aksi</th>
 			</tr>
 			<?php
@@ -87,7 +87,7 @@ if ($delMinuman != "") {
 				<th>No</th>
 				<th><a href="home.php?page=daftarmenu&&by=nama_minuman"  style="color: white;">Nama</a></th>
 				<th><a href="home.php?page=daftarmenu&&by=harga_minuman"  style="color: white;">Harga</a></th>
-				<th><a href="home.php?page=daftarmenu&&by=jumlah_minuman" style="color: white;">Jumlah</a></th>
+				<th><a href="home.php?page=daftarmenu&&by=jumlah_minuman" style="color: white;">Stok</a></th>
 				<th>Aksi</th>
 			</tr>
 			<?php
